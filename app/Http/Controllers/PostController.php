@@ -2,20 +2,57 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index() 
     {
-        return view('post');
+        $posts = Post::orderBy('id', 'desc')->get();
+
+        //  dd($posts->toArray());
+
+        return view('post' , [
+            'posts' => $posts
+        ]);
+        
     }
     public function create()
     {
         return view('tambah-post');
     }
-    public function edit()
+    public function edit($id)
     {
-        return view('edit-post');
+        // dd($id);
+        $post = Post::find($id);
+
+        // dd($post-
+
+        return view('edit-post', [
+                'posts' => $post
+        ]);
+
     }
+
+    public function store(Request $request)
+    {
+
+        Post::create($request->all());
+
+        return redirect('/posts');
+    }
+    
+
+    public function update(Request $request, $id)
+    {
+
+    // dd($request->all());
+
+    $post = Post::find($id);
+    
+    $post->update($request->all());
+
+    return redirect('/posts');
+  }
 }

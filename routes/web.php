@@ -9,5 +9,9 @@ Route::get('/', function () {
 Route::get('/posts', [PostController::class, 'index']);
 
 Route::get('/tambah-post', [PostController::class, 'create']);
+Route::post('/store', [PostController::class, 'store']);
 
-Route::get('/edit-post', [PostController::class, 'edit']);
+Route::get('/edit-post/{id}', [PostController::class, 'edit']);
+
+Route::put('/update/{id}', [PostController::class, 'update']);
+
