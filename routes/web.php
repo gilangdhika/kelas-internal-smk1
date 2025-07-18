@@ -12,6 +12,8 @@ Route::get('/tambah-post', [PostController::class, 'create']);
 Route::post('/store', [PostController::class, 'store']);
 
 Route::get('/edit-post/{id}', [PostController::class, 'edit']);
-
 Route::put('/update/{id}', [PostController::class, 'update']);
 
+Route::get('/detail-post/{id}', [PostController::class, 'show']);
+
+Route::delete('/delete-post/{id}', [PostController::class, 'beast']);

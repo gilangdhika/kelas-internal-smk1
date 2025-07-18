@@ -26,8 +26,13 @@
                 <td>{{ $post->isi}}</td>
                 <td>
                     <a href="/edit-post/{{ $post->id }}">Edit</a>
-                    <a href="#">Detail</a>
-                    <a href="#">Delete</a>
+                    <a href="/detail-post/{{ $post->id }}">Detail</a>
+                    {{-- <a href="#">Delete</a> . --}}
+                    <form action="/delete-post/{{ $post->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit"onclick="return confirm ('apakah anda yakin ingin menghapus ??');">Delete
                 </td>
             </tr>
             @endforeach

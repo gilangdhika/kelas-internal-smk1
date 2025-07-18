@@ -55,4 +55,22 @@ class PostController extends Controller
 
     return redirect('/posts');
   }
+
+  public function show($id)
+  {
+     $post = Post::find($id);
+
+    return view('detail-postingan', [
+         'post' => $post
+     ]);
+  }
+
+  public function beast($id)
+{
+    $post = Post::find($id);
+    
+    $post->delete();
+
+    return redirect('/posts');
+}
 }
